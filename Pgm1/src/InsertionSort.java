@@ -1,18 +1,22 @@
-import java.util.ArrayList;
+import java.util.List;
 
 public class InsertionSort implements ISort {
-	public InsertionSort(ArrayList<Person> persons){
-		
+	
+	List<Person> unsortedPersons;
+	List<Person> sortedPersons;
+	
+	public InsertionSort(List<Person> unsortedPersons){
+		this.unsortedPersons = unsortedPersons;
 	}
 
 	@Override
 	public void execute() {
-		
+		sortedPersons = unsortedPersons;
 	}
 
 	@Override
-	public ArrayList<Person> getSortedPersons() {
-		return null;
+	public List<Person> getSortedPersons() {
+		return sortedPersons;
 		
 	}
 }

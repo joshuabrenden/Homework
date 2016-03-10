@@ -1,8 +1,8 @@
-import java.util.ArrayList;
+import java.util.List;
 
 public interface ISort {
 
 	public void execute();
 	
-	public ArrayList<Person> getSortedPersons();
+	public List<Person> getSortedPersons();
 }

@@ -7,16 +7,16 @@ public class PersonBuilder {
 
 	}
 
-	public ArrayList<Person> buildPersonList(ArrayList<String> personStrings) {
-		ArrayList<Person> personArray = new ArrayList<>();
+	public List<Person> buildPersonList(List<String> personStrings) {
+		List<Person> persons = new ArrayList<>();
 
 		for (String s : personStrings) {
-			personArray.add(buildPerson(s));
+			persons.add(buildPerson(s));
 		}
 
-		return personArray;
+		return persons; 
 	}
-
+	
 	private Person buildPerson(String personString) {
 
 		String[] personAttributes = personString.split(" \\| ");

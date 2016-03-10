@@ -3,26 +3,27 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class OutFile {
 
 	private Integer lineCount;
 	private String fileName;
-	private ArrayList<Person> personArray;
+	private List<Person> persons;
 
-	public OutFile(String fileName, ArrayList<Person> personArray, Integer lineCount) {
+	public OutFile(String fileName, List<Person> persons, Integer lineCount) {
 		this.fileName = fileName;
-		this.personArray = personArray;
+		this.persons = persons;
 		this.lineCount = lineCount;
 	}
 
 	public void buildOutFile() {
 
-		try (FileWriter fileWriter = new FileWriter(createFile().getAbsoluteFile())) {
+		try (FileWriter fileWriter = new FileWriter(createFile())) {
 			BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
 			bufferedWriter.write(lineCount.toString() + "\n");
 			
-			for(Person p : personArray){
+			for(Person p : persons){
 				bufferedWriter.write(p.toString());
 			}
 			

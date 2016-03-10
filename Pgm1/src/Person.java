@@ -1,5 +1,5 @@
 
-public class Person {
+public class Person implements Comparable<Person> {
 	private String firstName;
 	private String lastName;
 	private String state;
@@ -19,18 +19,8 @@ public class Person {
 	public String toString() {
 
 		StringBuilder builder = new StringBuilder();
-		builder.append(firstName)
-			   .append(" ")
-			   .append(lastName)
-			   .append(" | ")
-			   .append(street)
-			   .append(" | ")
-			   .append(city)
-			   .append(" | ")
-			   .append(state)
-			   .append(" | ")
-			   .append(zip)
-			   .append("\n");
+		builder.append(firstName).append(" ").append(lastName).append(" | ").append(street).append(" | ").append(city)
+				.append(" | ").append(state).append(" | ").append(zip).append("\n");
 
 		return builder.toString();
 	}
@@ -66,6 +56,33 @@ public class Person {
 
 	public String getZip() {
 		return zip;
+	}
+
+	@Override
+	public int compareTo(Person otherPerson) {
+		int result = this.lastName.compareToIgnoreCase(otherPerson.lastName);
+
+		if (result == 0) {
+			result = this.firstName.compareToIgnoreCase(otherPerson.firstName);
+
+			if (result == 0) {
+				result = this.state.compareToIgnoreCase(otherPerson.state);
+
+				if (result == 0) {
+					result = this.city.compareToIgnoreCase(otherPerson.city);
+
+					if (result == 0) {
+						result = this.zip.compareToIgnoreCase(otherPerson.zip);
+
+						if (result == 0) {
+							result = this.street.compareToIgnoreCase(otherPerson.street);
+						}
+					}
+				}
+			}
+		}
+
+		return result;
 	}
 
 }

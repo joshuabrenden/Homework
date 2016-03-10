@@ -1,31 +1,30 @@
-import java.util.ArrayList;
+import java.util.List;
 
 public class Pgm1 {
 	public static void main(String[] args) {
 
-		String inputFileName = "/home/josh/Documents/Projects/Workspaces/Main/Pgm1/src/Input.txt";
-		String outputFilePath = "/home/josh/Documents/Projects/Workspaces/Main/Pgm1/src/";
+		String inputFileName = "Input.txt";
 		ReadFile readFile = new ReadFile(inputFileName);
-		Integer lineCount = readFile.getLineCount();
 		
 		PersonBuilder builder = new PersonBuilder();
-		ArrayList<Person> persons = builder.buildPersonList(readFile.buildArrayFromFile());
+		List<Person> persons = builder.buildPersonList(readFile.buildArrayFromFile());
+		Integer lineCount = readFile.getLineCount();
 		
+		//Change to a sort factory
 		QuickSort quickSort = new QuickSort(persons);
 		quickSort.execute();
-		OutFile quickSortResults = new OutFile(outputFilePath + "QuickSortResults.txt", quickSort.getSortedPersons(), lineCount);
+		OutFile quickSortResults = new OutFile("QuickSortResults.txt", quickSort.getSortedPersons(), lineCount);
 		quickSortResults.buildOutFile();
-		
-		MergeSort mergeSort = new MergeSort(persons);
-		mergeSort.execute();
-		OutFile mergeSortResults = new OutFile(outputFilePath + "MergeSortResults.txt", mergeSort.getSortedPersons(), lineCount);
-		mergeSortResults.buildOutFile();
 		
 		InsertionSort insertionSort = new InsertionSort(persons);
 		insertionSort.execute();
-		OutFile insertionSortResults = new OutFile(outputFilePath + "InsertionSortResults.txt", insertionSort.getSortedPersons(), lineCount);
+		OutFile insertionSortResults = new OutFile("InsertionSortResults.txt", insertionSort.getSortedPersons(), lineCount);
 		insertionSortResults.buildOutFile();
-		
+
+		MergeSort mergeSort = new MergeSort(persons);
+		mergeSort.execute();
+		OutFile mergeSortResults = new OutFile("MergeSortResults.txt", mergeSort.getSortedPersons(), lineCount);
+		mergeSortResults.buildOutFile();
 	}
 
 }

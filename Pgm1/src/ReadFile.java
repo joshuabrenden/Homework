@@ -1,10 +1,10 @@
 import java.io.BufferedReader;
-import java.io.FileInputStream;
+import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class ReadFile {
@@ -17,13 +17,15 @@ public class ReadFile {
 
 	}
 
-	public ArrayList<String> buildArrayFromFile() {
-		ArrayList<String> personStrings = new ArrayList<>();
-		try (InputStream iStream = new FileInputStream(fileName)) {
+	public List<String> buildArrayFromFile() {
+		List<String> personStrings = new ArrayList<>();
+		URL path = getClass().getResource(fileName);
 
-			InputStreamReader iStreamReader = new InputStreamReader(iStream);
-			BufferedReader reader = new BufferedReader(iStreamReader);
+		try {
+			File inputFile = new File(path.toURI());
+			FileReader fileReader = new FileReader(inputFile);
 
+			BufferedReader reader = new BufferedReader(fileReader);
 			setLineCount(reader.readLine());
 
 			String line;
@@ -31,7 +33,9 @@ public class ReadFile {
 				personStrings.add(line);
 			}
 
-		} catch (IOException e) {
+			reader.close();
+
+		} catch (IOException | URISyntaxException e) {
 			System.out.println(e.getMessage() + e);
 		}
 
