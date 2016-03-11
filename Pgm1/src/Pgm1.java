@@ -27,7 +27,14 @@ public class Pgm1 {
 	
 	public static void runQuickSort(List<Person> persons, String inputFileName, Integer lineCount){
 		QuickSort quickSort = new QuickSort(persons);
+		long startTime = System.nanoTime();
+		
 		quickSort.execute();
+		long endTime = System.nanoTime();
+		long duration = (endTime - startTime);
+		
+		System.out.println(lineCount + " rows took: " + duration / 1000000.0 + " ms to sort using quicksort.");
+		
 		OutFile quickSortResults = new OutFile("QuickSortResults-" + inputFileName, quickSort.getSortedPersons(),
 				lineCount);
 		quickSortResults.buildOutFile();
@@ -35,7 +42,14 @@ public class Pgm1 {
 	
 	public static void runInsertionSort(List<Person> persons, String inputFileName, Integer lineCount){
 		InsertionSort insertionSort = new InsertionSort(persons);
+		long startTime = System.nanoTime();
+		
 		insertionSort.execute();
+		long endTime = System.nanoTime();
+		long duration = (endTime - startTime);
+		
+		System.out.println(lineCount + " rows took: " + duration / 1000000.0 + " ms to sort using insertionsort.");
+		
 		OutFile insertionSortResults = new OutFile("InsertionSortResults-" + inputFileName,
 				insertionSort.getSortedPersons(), lineCount);
 		insertionSortResults.buildOutFile();
@@ -43,7 +57,14 @@ public class Pgm1 {
 	
 	public static void runMergeSort(List<Person> persons, String inputFileName, Integer lineCount){
 		MergeSort mergeSort = new MergeSort(persons);
+		long startTime = System.nanoTime();
+		
 		mergeSort.execute();
+		long endTime = System.nanoTime();
+		long duration = (endTime - startTime);
+		
+		System.out.println(lineCount + " rows took: " + duration / 1000000.0 + " ms to sort using mergesort.\n");
+		
 		OutFile mergeSortResults = new OutFile("MergeSortResults-" + inputFileName, mergeSort.getSortedPersons(),
 				lineCount);
 		mergeSortResults.buildOutFile();
