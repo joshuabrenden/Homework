@@ -11,9 +11,9 @@ public class Pgm1 {
 			List<Person> persons = builder.buildPersonList(readFile.buildArrayFromFile());
 			Integer lineCount = readFile.getLineCount();
 
+			runMergeSort(persons, inputFileName, lineCount);
 			runQuickSort(persons, inputFileName, lineCount);
 			runInsertionSort(persons, inputFileName, lineCount);
-			runMergeSort(persons, inputFileName, lineCount);
 		}
 	}
 
@@ -22,6 +22,7 @@ public class Pgm1 {
 		testFiles.add("10People.txt");
 		testFiles.add("100People.txt");
 		testFiles.add("1000People.txt");
+		testFiles.add("10000People.txt");
 		return testFiles;
 	}
 	
@@ -33,7 +34,7 @@ public class Pgm1 {
 		long endTime = System.nanoTime();
 		long duration = (endTime - startTime);
 		
-		System.out.println(lineCount + " rows took: " + duration / 1000000.0 + " ms to sort using quicksort.");
+		System.out.println(lineCount + " rows using quicksort: " + duration / 1000000.0 + ".  Avg " + (duration / 1000000.0) / lineCount + " ms per row.");
 		
 		OutFile quickSortResults = new OutFile("QuickSortResults-" + inputFileName, quickSort.getSortedPersons(),
 				lineCount);
@@ -48,7 +49,7 @@ public class Pgm1 {
 		long endTime = System.nanoTime();
 		long duration = (endTime - startTime);
 		
-		System.out.println(lineCount + " rows took: " + duration / 1000000.0 + " ms to sort using insertionsort.");
+		System.out.println(lineCount + " rows using insertionsort: " + duration / 1000000.0 + ".  Avg " + (duration / 1000000.0) / lineCount + " ms per row.\n");
 		
 		OutFile insertionSortResults = new OutFile("InsertionSortResults-" + inputFileName,
 				insertionSort.getSortedPersons(), lineCount);
@@ -63,7 +64,7 @@ public class Pgm1 {
 		long endTime = System.nanoTime();
 		long duration = (endTime - startTime);
 		
-		System.out.println(lineCount + " rows took: " + duration / 1000000.0 + " ms to sort using mergesort.\n");
+		System.out.println(lineCount + " rows using mergesort: " + duration / 1000000.0 + ".  Avg " + (duration / 1000000.0) / lineCount + " ms per row.");
 		
 		OutFile mergeSortResults = new OutFile("MergeSortResults-" + inputFileName, mergeSort.getSortedPersons(),
 				lineCount);
