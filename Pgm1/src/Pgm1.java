@@ -32,9 +32,9 @@ public class Pgm1 {
 		
 		quickSort.execute();
 		long endTime = System.nanoTime();
-		long duration = (endTime - startTime);
-		
-		System.out.println(lineCount + " rows using quicksort: " + duration / 1000000.0 + ".  Avg " + (duration / 1000000.0) / lineCount + " ms per row.");
+		String duration = String.format( "%.2f", (endTime - startTime) / 1000000.0);
+		String durationAverage = String.format( "%.4f", ((endTime - startTime) / 1000000.0) / lineCount);
+		System.out.println(lineCount + " rows using quicksort: " + duration + "ms. Avg " + durationAverage + "ms per row.");
 		
 		OutFile quickSortResults = new OutFile("QuickSortResults-" + inputFileName, quickSort.getSortedPersons(),
 				lineCount);
@@ -47,9 +47,9 @@ public class Pgm1 {
 		
 		insertionSort.execute();
 		long endTime = System.nanoTime();
-		long duration = (endTime - startTime);
-		
-		System.out.println(lineCount + " rows using insertionsort: " + duration / 1000000.0 + ".  Avg " + (duration / 1000000.0) / lineCount + " ms per row.\n");
+		String duration = String.format( "%.2f", (endTime - startTime) / 1000000.0);
+		String durationAverage = String.format( "%.4f", ((endTime - startTime) / 1000000.0) / lineCount);
+		System.out.println(lineCount + " rows using insertionSort: " + duration + "ms. Avg " + durationAverage + "ms per row.");
 		
 		OutFile insertionSortResults = new OutFile("InsertionSortResults-" + inputFileName,
 				insertionSort.getSortedPersons(), lineCount);
@@ -62,9 +62,9 @@ public class Pgm1 {
 		
 		mergeSort.execute();
 		long endTime = System.nanoTime();
-		long duration = (endTime - startTime);
-		
-		System.out.println(lineCount + " rows using mergesort: " + duration / 1000000.0 + ".  Avg " + (duration / 1000000.0) / lineCount + " ms per row.");
+		String duration = String.format( "%.2f", (endTime - startTime) / 1000000.0);
+		String durationAverage = String.format( "%.4f", ((endTime - startTime) / 1000000.0) / lineCount);
+		System.out.println(lineCount + " rows using mergesort: " + duration + "ms. Avg " + durationAverage + "ms per row.");
 		
 		OutFile mergeSortResults = new OutFile("MergeSortResults-" + inputFileName, mergeSort.getSortedPersons(),
 				lineCount);
